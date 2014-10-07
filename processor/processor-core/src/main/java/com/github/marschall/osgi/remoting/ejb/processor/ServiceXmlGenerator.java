@@ -52,6 +52,11 @@ public abstract class ServiceXmlGenerator extends AbstractProcessor {
       if (this.distinctName == null) {
         this.distinctName = "";
       }
+      // If the value of a property is empty, Maven (or something else...not really sure) treats that as null. 
+      // These null values need to be converted back to empty string to avoid JNDI names containing 'null'
+      if(this.applicationName == null) {
+        this.applicationName = "";
+      }
     }
   }
 
